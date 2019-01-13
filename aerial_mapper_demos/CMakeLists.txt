@@ -17,55 +17,55 @@ cs_add_library(${PROJECT_NAME}
 cs_add_executable(${PROJECT_NAME}_ortho_forward_homography
     src/ortho/main-ortho-forward-homography.cc)
 add_dependencies(${PROJECT_NAME}_ortho_forward_homography ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_ortho_forward_homography ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_ortho_forward_homography ${catkin_LIBRARIES} glog gflags)
 
 # ORTHO-MOSAIC: backward/grid
 cs_add_executable(${PROJECT_NAME}_ortho_backward_grid
     src/ortho/main-ortho-backward-grid.cc)
 add_dependencies(${PROJECT_NAME}_ortho_backward_grid ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_ortho_backward_grid ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_ortho_backward_grid ${catkin_LIBRARIES} glog gflags)
 
 # ORTHO-MOSAIC: backward/grid incremental
 cs_add_executable(${PROJECT_NAME}_ortho_backward_grid_incremental
     src/ortho/main-ortho-backward-grid-incremental.cc)
 add_dependencies(${PROJECT_NAME}_ortho_backward_grid_incremental ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_ortho_backward_grid_incremental ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_ortho_backward_grid_incremental ${catkin_LIBRARIES} glog gflags)
 
 # ORTHO-MOSAIC: from point cloud
 cs_add_executable(${PROJECT_NAME}_ortho_from_pcl
     src/ortho/main-ortho-from-pcl.cc)
 add_dependencies(${PROJECT_NAME}_ortho_from_pcl ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_ortho_from_pcl ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_ortho_from_pcl ${catkin_LIBRARIES} glog gflags)
 
 # DSM
 cs_add_executable(${PROJECT_NAME}_dsm
     src/dsm/main-dsm.cc)
 add_dependencies(${PROJECT_NAME}_dsm ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_dsm ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_dsm ${catkin_LIBRARIES} glog gflags)
 
 # DENSE POINT CLOUD
 cs_add_executable(${PROJECT_NAME}_dense_pcl
     src/dense-pcl/main-dense-pcl.cc)
 add_dependencies(${PROJECT_NAME}_dense_pcl ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_dense_pcl ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_dense_pcl ${catkin_LIBRARIES} glog gflags)
 
 # PIX4D GEOFILE EXPORTER
 cs_add_executable(${PROJECT_NAME}_export_pix4d_geofile
     src/util/main-generate-pix4d-geofile.cc)
 add_dependencies(${PROJECT_NAME}_export_pix4d_geofile ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_export_pix4d_geofile ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_export_pix4d_geofile ${catkin_LIBRARIES} glog gflags)
 
 # GOOGLE MAPS API DEMO
 cs_add_executable(${PROJECT_NAME}_google_maps_api
     src/util/main-test-google-maps-api)
 add_dependencies(${PROJECT_NAME}_google_maps_api ${${PROJECT_NAME}_EXPORTED_TARGETS}})
-target_link_libraries(${PROJECT_NAME}_google_maps_api ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_google_maps_api ${catkin_LIBRARIES} glog gflags)
 
 #############
 # QTCREATOR #
 #############
 FILE(GLOB_RECURSE LibFiles "include/*")
-add_custom_target(headers SOURCES ${LibFiles})
+add_custom_target(aerial_mapper_demos_headers SOURCES ${LibFiles})
   
 ##########
 # EXPORT #

@@ -17,7 +17,7 @@ cs_add_library(${PROJECT_NAME}
 # QTCREATOR #
 #############
 FILE(GLOB_RECURSE LibFiles "include/*")
-add_custom_target(headers SOURCES ${LibFiles})
+add_custom_target(aerial_mapper_grid_map_headers SOURCES ${LibFiles})
   
 ##########
 # EXPORT #

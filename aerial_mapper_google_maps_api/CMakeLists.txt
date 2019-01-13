@@ -4,6 +4,9 @@ project(aerial_mapper_google_maps_api)
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
+find_package(Eigen3)
+include_directories(${EIGEN3_INCLUDE_DIRS})
+
 #############
 # LIBRARIES #
 #############
@@ -18,7 +21,7 @@ curlpp -lcurlpp -lcurl)
 # QTCREATOR #
 #############
 FILE(GLOB_RECURSE LibFiles "include/*")
-add_custom_target(headers SOURCES ${LibFiles})
+add_custom_target(aerial_mapper_google_maps_api_headers SOURCES ${LibFiles})
 
 ##########
 # EXPORT #

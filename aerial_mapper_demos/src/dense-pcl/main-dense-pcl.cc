@@ -33,7 +33,7 @@ DEFINE_bool(use_BM, true,
             "Blockmatching if false.");
 
 int main(int argc, char** argv) {
-  google::InitGoogleLogging(argv[0]);
+  //google::InitGoogleLogging(argv[0]);
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InstallFailureSignalHandler();
   ros::init(argc, argv, "main_dense_pcl");

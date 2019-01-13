@@ -28,7 +28,7 @@ target_link_libraries(${PROJECT_NAME} ${GDAL_LIBRARY})
 # QTCREATOR #
 #############
 FILE(GLOB_RECURSE LibFiles "include/*")
-add_custom_target(headers SOURCES ${LibFiles})
+add_custom_target(aerial_mapper_io_headers SOURCES ${LibFiles})
 
 ##########
 # EXPORT #
