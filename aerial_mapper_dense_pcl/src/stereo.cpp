@@ -101,10 +101,19 @@ void Stereo::addFrames(const Poses& T_G_Bs, const Images& images,
       CHECK(point_cloud_tmp.size() == point_cloud_intensities_tmp.size());
       point_cloud->insert(point_cloud->end(), point_cloud_tmp.begin(),
                           point_cloud_tmp.end());
+      char buf[200];
+      snprintf(buf, 200, "/tmp/pointcloud_%d.txt", i);
+      std::ofstream ofs(buf);
       if (point_cloud_intensities) {
         point_cloud_intensities->insert(point_cloud_intensities->end(),
                                         point_cloud_intensities_tmp.begin(),
                                         point_cloud_intensities_tmp.end());
+        for (int j=0; j<point_cloud_tmp.size(); j++) {
+            Eigen::Vector3d p = point_cloud_tmp[i];
+            ofs << p(0) << " " << p(1) << " " << p(2) << " "
+                << point_cloud_intensities_tmp[i] << std::endl;
+        }
+        ofs.close();
       }
     }
   }
