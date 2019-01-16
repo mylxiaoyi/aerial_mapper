@@ -16,8 +16,10 @@ Densifier::Densifier(const BlockMatchingParameters& block_matching_params,
                      const cv::Size& image_resolution)
     : image_resolution_(image_resolution) {
   if (block_matching_params.use_BM) {
+    LOG(INFO) << "BlockMatchingBM Densifier";
     block_matcher_.reset(new BlockMatchingBM(block_matching_params.bm));
   } else {
+    LOG(INFO) << "BlockMatchingSGBM Densifier";
     block_matcher_.reset(new BlockMatchingSGBM(block_matching_params.sgbm));
   }
 }

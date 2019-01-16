@@ -3,7 +3,7 @@
 --v=200
 
 # dataset
---data_directory=/tmp/simulation/
+--data_directory=/home/mylxiaoyi/work/ros_aerial_mapper/data/cadastre_gray/
 --filename_poses=opt_poses.txt
 --prefix_images=image_
 --filename_camera_rig=camera_fixed_wing.yaml

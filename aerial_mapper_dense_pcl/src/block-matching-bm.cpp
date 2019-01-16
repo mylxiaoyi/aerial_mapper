@@ -21,8 +21,24 @@ void BlockMatchingBM::computeDisparityMap(
 
   densified_stereo_pair->disparity_map.convertTo(
       densified_stereo_pair->disparity_map, CV_32F);
+  cv::Mat dis_img1;
+  densified_stereo_pair->disparity_map.convertTo(dis_img1, CV_8UC1);
   densified_stereo_pair->disparity_map =
       densified_stereo_pair->disparity_map / 16.0;
+  cv::Mat dis_img2;
+  densified_stereo_pair->disparity_map.convertTo(dis_img2, CV_8UC1);
+
+  static int counter = 0;
+  char buf[200];
+  snprintf(buf, 200, "/tmp/left_%d.jpg", counter);
+  cv::imwrite(std::string(buf), rectified_stereo_pair.image_left);
+  snprintf(buf, 200, "/tmp/right_%d.jpg", counter);
+  cv::imwrite(std::string(buf), rectified_stereo_pair.image_right);
+
+  snprintf(buf, 200, "/tmp/dis_img1_%d.jpg", counter);
+  cv::imwrite(std::string(buf), dis_img1);
+  snprintf(buf, 200, "/tmp/dis_img2_%d.jpg", counter++);
+  cv::imwrite(std::string(buf), dis_img2);
 
   // Create masked disparity map.
   cv::Mat disparity_map_masked(densified_stereo_pair->disparity_map.rows,

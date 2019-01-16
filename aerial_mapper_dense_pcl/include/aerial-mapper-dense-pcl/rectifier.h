@@ -46,6 +46,10 @@ class Rectifier {
                          const cv::Mat& image_right_undistorted,
                          RectifiedStereoPair* rectified_stereo_pair);
 
+//  virtual ~Rectifier() {
+//      LOG(INFO) << "Rectifier::desctructor";
+//  }
+
   cv::Mat computeMask(const Eigen::Matrix3d& T1_rect) const;
 
   cv::Mat map_rectify_1_x_, map_rectify_1_y_, map_rectify_2_x_,

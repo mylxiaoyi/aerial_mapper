@@ -207,6 +207,7 @@ void Stereo::visualizeRectification(
     const cv::Mat& image_undistorted_1, const cv::Mat& image_undistorted_2,
     const cv::Mat& image_undistorted_rectified_1,
     const cv::Mat& image_undistorted_rectified_2) const {
+  static int counter = 0;
   cv::Mat images_undistorted, images_undistorted_rectified, all_images;
   cv::hconcat(image_undistorted_1, image_undistorted_2, images_undistorted);
   cv::hconcat(image_undistorted_rectified_1, image_undistorted_rectified_2,
@@ -219,6 +220,9 @@ void Stereo::visualizeRectification(
   cv::vconcat(images_undistorted, images_undistorted_rectified, all_images);
   cv::imshow("top: undistorted, bottom: undistorted + rectified",
              all_images);
+  char buf[200];
+  snprintf(buf, 200, "/tmp/recimg_%d.jpg", counter++);
+  cv::imwrite(std::string(buf), all_images);
   cv::waitKey(1);
 }
 

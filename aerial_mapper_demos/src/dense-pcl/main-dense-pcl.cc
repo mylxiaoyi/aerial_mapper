@@ -31,6 +31,7 @@ DEFINE_int32(dense_pcl_use_every_nth_image, 10,
 DEFINE_bool(use_BM, true,
             "Use BM Blockmatching if true. Use SGBM (=Semi-Global-) "
             "Blockmatching if false.");
+DEFINE_string(filename_pointcloud, "/tmp/pointcloud.txt", "point cloud file name");
 
 int main(int argc, char** argv) {
   //google::InitGoogleLogging(argv[0]);
@@ -69,7 +70,21 @@ int main(int argc, char** argv) {
   block_matching_params.use_BM = FLAGS_use_BM;
   stereo::Stereo stereo(ncameras, settings_dense_pcl, block_matching_params);
   AlignedType<std::vector, Eigen::Vector3d>::type point_cloud;
-  stereo.addFrames(T_G_Bs, images, &point_cloud);
+  std::vector<int> point_cloud_intensities;
+  stereo.addFrames(T_G_Bs, images, &point_cloud, &point_cloud_intensities);
+
+  LOG_ASSERT(point_cloud.size() == point_cloud_intensities.size());
+
+  std::ofstream ofs(FLAGS_filename_pointcloud);
+  ofs << std::fixed << std::setprecision(6);
+
+  for (int i=0; i<point_cloud.size(); i++) {
+      Eigen::Vector3d p = point_cloud[i];
+      ofs << p(0) << " " << p(1) << " " << p(2) << " "
+          << point_cloud_intensities[i] << std::endl;
+  }
+
+  LOG(INFO) << "Save Pointcloud Done";
 
   return 0;
 }

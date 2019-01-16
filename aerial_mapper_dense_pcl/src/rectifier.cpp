@@ -45,6 +45,8 @@ void Rectifier::rectifyStereoPair(const StereoRigParameters& stereo_pair,
   const Eigen::Vector3d x = stereo_pair.t_G_C2 - stereo_pair.t_G_C1;
   rectified_stereo_pair->baseline = x.norm();
 
+  LOG(INFO) << "rectified_stereo_pair->baseline = " << rectified_stereo_pair->baseline;
+
   // New y axes (orthogonal to new x and old z of camera 1)
   const Eigen::Vector3d y = stereo_pair.R_G_C1.col(2).cross(x);
 

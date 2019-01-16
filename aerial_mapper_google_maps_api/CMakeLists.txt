@@ -15,7 +15,7 @@ add_definitions(--std=c++0x -Wall -Wextra -pedantic)
 cs_add_library(${PROJECT_NAME} src/google-maps-api.cc)
 
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES}
-curlpp -lcurlpp -lcurl)
+curlpp -lcurlpp -lcurl gflags)
 
 #############
 # QTCREATOR #

@@ -44,7 +44,7 @@ DEFINE_bool(use_BM, true,
             "Blockmatching if false.");
 
 int main(int argc, char** argv) {
-  google::InitGoogleLogging(argv[0]);
+//  google::InitGoogleLogging(argv[0]);
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InstallFailureSignalHandler();
   ros::init(argc, argv, "dsm_from_file");
@@ -90,6 +90,8 @@ int main(int argc, char** argv) {
     stereo.addFrames(T_G_Bs, images, &point_cloud);
   }
 
+  LOG(INFO) << "point_cloud.size = " << point_cloud.size();
+
   LOG(INFO) << "Initialize layered map.";
   grid_map::Settings settings_aerial_grid_map;
   settings_aerial_grid_map.center_easting = FLAGS_center_easting;
@@ -97,7 +99,10 @@ int main(int argc, char** argv) {
   settings_aerial_grid_map.delta_easting = FLAGS_delta_easting;
   settings_aerial_grid_map.delta_northing = FLAGS_delta_northing;
   settings_aerial_grid_map.resolution = FLAGS_resolution;
+
+  LOG(INFO) << "Creating AerialGridMap";
   grid_map::AerialGridMap map(settings_aerial_grid_map);
+  LOG(INFO) << "Creating AerialgridMap Done";
 
   LOG(INFO) << "Create DSM (batch).";
   dsm::Settings settings_dsm;
