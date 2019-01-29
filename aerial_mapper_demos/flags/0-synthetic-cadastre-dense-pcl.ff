@@ -1,6 +1,6 @@
 --alsologtostderr=true
 --v=200
---data_directory=/home/mylxiaoyi/work/ros_aerial_mapper/dataset/cadastre_gray/
+--data_directory=/home/mylxiaoyi/work/ros_aerial_mapper/data/cadastre_gray/
 --filename_camera_rig=camera_fixed_wing.yaml
 --filename_poses=opt_poses.txt
 --prefix_images=image_

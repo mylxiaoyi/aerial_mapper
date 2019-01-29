@@ -6,7 +6,8 @@
 --prefix_images=image_
 --center_easting=0.0
 --center_northing=0.0
---delta_easting=100.0
---delta_northing=100.0
---resolution=0.0001
+--delta_easting=10.0
+--delta_northing=10.0
+--resolution=0.01
 --dense_pcl_use_every_nth_image=1
+--filename_point_cloud=/home/mylxiaoyi/work/ros_aerial_mapper/ieu_pointcloud/pointcloud_18.txt

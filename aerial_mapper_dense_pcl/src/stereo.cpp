@@ -109,9 +109,9 @@ void Stereo::addFrames(const Poses& T_G_Bs, const Images& images,
                                         point_cloud_intensities_tmp.begin(),
                                         point_cloud_intensities_tmp.end());
         for (int j=0; j<point_cloud_tmp.size(); j++) {
-            Eigen::Vector3d p = point_cloud_tmp[i];
+            Eigen::Vector3d p = point_cloud_tmp[j];
             ofs << p(0) << " " << p(1) << " " << p(2) << " "
-                << point_cloud_intensities_tmp[i] << std::endl;
+                << point_cloud_intensities_tmp[j] << std::endl;
         }
         ofs.close();
       }

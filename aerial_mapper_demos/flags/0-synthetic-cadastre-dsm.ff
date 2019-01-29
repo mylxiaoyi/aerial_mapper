@@ -9,3 +9,4 @@
 --delta_easting=200.0
 --delta_northing=200.0
 --resolution=1.0
+--filename_point_cloud=/home/mylxiaoyi/work/ros_aerial_mapper/pointcloud.txt
