@@ -71,6 +71,10 @@ void Rectifier::rectifyStereoPair(const StereoRigParameters& stereo_pair,
       (Eigen::Matrix<double, 3, 4>() << R_G_C_rect,
        R_G_C_rect * (-stereo_pair.t_G_C2)).finished();
 
+  LOG(INFO) << "R_G_C_rect = " << R_G_C_rect;
+  LOG(INFO) << "P1_rect = " << P1_rect;
+  LOG(INFO) << "P2_rect = " << P2_rect;
+
   // Rectifying image transformation.
   const Eigen::Matrix3d Q1 = stereo_pair.K * (stereo_pair.R_G_C1.transpose());
   const Eigen::Matrix3d Q2 = stereo_pair.K * (stereo_pair.R_G_C2.transpose());

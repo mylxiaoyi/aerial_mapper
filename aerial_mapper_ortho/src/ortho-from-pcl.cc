@@ -13,7 +13,8 @@
 
 namespace ortho {
 
-OrthoFromPcl::OrthoFromPcl(const Settings& settings) : settings_(settings) {
+OrthoFromPcl::OrthoFromPcl(const Settings& settings) /*: settings_(settings)*/ {
+  settings_ = settings;
   printParams();
 }
 

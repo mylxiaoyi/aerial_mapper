@@ -3,9 +3,9 @@
 --v=0
 
 # dataset
---backward_grid_data_directory=/media/timo/scnd/catkin_ws_aerial_mapper/src/aerial_mapper/data/
+--backward_grid_data_directory=/home/mylxiaoyi/work/ros_aerial_mapper/data/cadastre_gray/
 --backward_grid_filename_poses=opt_poses.txt
---backward_grid_prefix_images=opt_image_
+--backward_grid_prefix_images=image_
 --backward_grid_filename_camera_rig=camera_fixed_wing.yaml
 
 # backward grid orthomosaic

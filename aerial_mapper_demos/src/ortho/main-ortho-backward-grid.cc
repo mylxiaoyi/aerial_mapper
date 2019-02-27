@@ -64,7 +64,7 @@ DEFINE_bool(load_point_cloud_from_file, false,
 void parseSettingsOrtho(ortho::Settings* settings_ortho);
 
 int main(int argc, char** argv) {
-  google::InitGoogleLogging(argv[0]);
+  //google::InitGoogleLogging(argv[0]);
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InstallFailureSignalHandler();
 
