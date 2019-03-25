@@ -55,23 +55,7 @@ int main(int argc, char** argv) {
   const std::string& filename_poses = FLAGS_filename_poses;
   const std::string& filename_images = base + FLAGS_prefix_images;
 
-  // Load camera rig from file.
   io::AerialMapperIO io_handler;
-  const std::string& filename_camera_rig_yaml = base + filename_camera_rig;
-  std::shared_ptr<aslam::NCamera> ncameras =
-      io_handler.loadCameraRigFromFile(filename_camera_rig_yaml);
-  CHECK(ncameras);
-
-  // Load body poses from file.
-  Poses T_G_Bs;
-  const std::string& path_filename_poses = base + filename_poses;
-  io::PoseFormat pose_format = io::PoseFormat::Standard;
-  io_handler.loadPosesFromFile(pose_format, path_filename_poses, &T_G_Bs);
-
-  // Load images from file.
-  size_t num_poses = T_G_Bs.size();
-  Images images;
-  io_handler.loadImagesFromFile(filename_images, num_poses, &images);
 
   // Retrieve dense point cloud.
   AlignedType<std::vector, Eigen::Vector3d>::type point_cloud;
@@ -79,6 +63,23 @@ int main(int argc, char** argv) {
     // Either load point cloud from file..
     io_handler.loadPointCloudFromFile(FLAGS_filename_point_cloud, &point_cloud);
   } else {
+    // Load camera rig from file.
+    const std::string& filename_camera_rig_yaml = base + filename_camera_rig;
+    std::shared_ptr<aslam::NCamera> ncameras =
+      io_handler.loadCameraRigFromFile(filename_camera_rig_yaml);
+    CHECK(ncameras);
+
+    // Load body poses from file.
+    Poses T_G_Bs;
+    const std::string& path_filename_poses = base + filename_poses;
+    io::PoseFormat pose_format = io::PoseFormat::Standard;
+    io_handler.loadPosesFromFile(pose_format, path_filename_poses, &T_G_Bs);
+
+    // Load images from file.
+    size_t num_poses = T_G_Bs.size();
+    Images images;
+    io_handler.loadImagesFromFile(filename_images, num_poses, &images);
+
     // .. or generate via dense reconstruction from poses and images.
     stereo::Settings settings_dense_pcl;
     settings_dense_pcl.use_every_nth_image =

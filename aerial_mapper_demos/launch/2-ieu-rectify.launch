@@ -1,0 +1,7 @@
+<launch>
+
+# Dense point cloud generation
+<arg name="flagfile" default="$(find aerial_mapper_demos)/flags/2-ieu-rectify.ff" />
+<node pkg="aerial_mapper_demos" type="aerial_mapper_demos_rectify" name="demo_rectify" output="screen" args="--flagfile=$(arg flagfile)" />
+
+</launch> 

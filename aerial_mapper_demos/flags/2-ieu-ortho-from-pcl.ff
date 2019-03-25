@@ -7,7 +7,7 @@
 --filename_poses=opt_poses.txt
 --prefix_images=image_
 --filename_camera_rig=camera_fixed_wing.yaml
---filename_point_cloud=/home/mylxiaoyi/work/ros_aerial_mapper/data/ieu/rec_1.txt
+--filename_point_cloud=/home/mylxiaoyi/work/ros_aerial_mapper/data/ieu/rec_0.txt
 --load_point_cloud_from_file=true
 
 # ortho_from_pcl 
@@ -17,6 +17,6 @@
 --ortho_from_pcl_orthomosaic_jpg_filename=/tmp/orthomosaic_from_pcl.jpg
 --ortho_from_pcl_center_easting=0.0
 --ortho_from_pcl_center_northing=0.0
---ortho_from_pcl_delta_easting=200.0
---ortho_from_pcl_delta_northing=200.0
+--ortho_from_pcl_delta_easting=1000.0
+--ortho_from_pcl_delta_northing=1000.0
 --ortho_from_pcl_resolution=0.5

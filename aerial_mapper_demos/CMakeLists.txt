@@ -49,6 +49,11 @@ cs_add_executable(${PROJECT_NAME}_dense_pcl
 add_dependencies(${PROJECT_NAME}_dense_pcl ${${PROJECT_NAME}_EXPORTED_TARGETS}})
 target_link_libraries(${PROJECT_NAME}_dense_pcl ${catkin_LIBRARIES} glog gflags)
 
+cs_add_executable(${PROJECT_NAME}_rectify
+    src/dense-pcl/main-rectify.cc)
+add_dependencies(${PROJECT_NAME}_rectify ${${PROJECT_NAME}_EXPORTED_TARGETS}})
+target_link_libraries(${PROJECT_NAME}_rectify ${catkin_LIBRARIES} glog gflags)
+
 # PIX4D GEOFILE EXPORTER
 cs_add_executable(${PROJECT_NAME}_export_pix4d_geofile
     src/util/main-generate-pix4d-geofile.cc)
